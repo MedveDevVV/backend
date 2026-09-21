@@ -10,4 +10,8 @@ class DataService(private val dataRepository: DataRepository) {
     fun receiveData(payload: DataPayload){
         dataRepository.receiveData(payload)
     }
+
+    fun readData() : DataPayload {
+        return DataPayload(dataRepository.readData())
+    }
 }

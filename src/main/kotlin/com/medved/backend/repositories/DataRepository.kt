@@ -6,8 +6,15 @@ import java.io.File
 
 @Repository
 class DataRepository {
+    val fileName = "data.txt"
 
     fun receiveData(payload: DataPayload) {
-        File("data.txt").appendText(payload.text + "\n")
+        File(fileName).appendText(payload.text + "\n")
+    }
+
+    fun readData() : String {
+        val file = File(fileName)
+        if (!file.exists()) return ""
+        return file.readText()
     }
 }

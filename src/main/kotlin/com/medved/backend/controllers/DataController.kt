@@ -3,6 +3,7 @@ package com.medved.backend.controllers
 import com.medved.backend.common.DataPayload
 import com.medved.backend.services.DataService
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,5 +18,10 @@ class DataController(private val dataService: DataService) {
     fun receiveData(@RequestBody payload: DataPayload): String {
         dataService.receiveData(payload)
         return "OK"
+    }
+
+    @GetMapping("/data")
+    fun getData(): DataPayload {
+        return dataService.readData()
     }
 }
